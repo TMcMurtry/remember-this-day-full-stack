@@ -1,0 +1,73 @@
+[
+    {"id": 1,
+        "category":"Small Moments of Joy",
+ "prompts":[
+    "What was the first thing that made you smile today?",
+"Did you hear a sound today that brought you comfort or happiness? What was it?",
+"What's a small, ordinary object you interacted with today that you're grateful for?",
+"Did someone's tone of voice or a kind word brighten your day? Describe it.",
+"What's a smell that brought back a happy memory or made you feel at peace today?",
+"Did you see something beautiful in nature today? What was it?",
+"What's a food or drink you enjoyed today that brought you a little moment of joy?",
+"Did you laugh today? What was the situation?",
+"What's a cozy or comforting moment you experienced today?",
+"Did you find joy in a simple routine today? What was it?"
+ ]},
+  {
+    "id": 2,
+    "category":"Relationships and Connections",
+ "prompts":[
+    "Who made you feel appreciated or loved today? How did they do it?",
+"Did you have a meaningful conversation today? What was it about?",
+"Who's someone you're grateful to have in your life, and why?",
+"Did you do something kind for someone else today? How did it make you feel?",
+"Who's a person in your life who always knows how to make you smile?",
+"Did you receive a message or call today that made your day better?",
+"Who's someone you haven't seen in a while but are grateful for?",
+"Did you witness an act of kindness today? What happened?",
+"Who's a person who has helped you recently, big or small?",
+"Did you share a laugh with someone today? What was it about?"
+ ]},
+  {"id": 3,
+    "category":"Personal Growth and Achievements",
+ "prompts":[
+    "What's something you accomplished today, no matter how small?",
+"Did you learn something new today? What was it?",
+"What's a challenge you faced today that you're proud of handling?",
+"Did you step out of your comfort zone today? What did you do?",
+"What's a skill or talent you used today that you're grateful for?",
+"Did you receive feedback today that made you feel good about yourself?",
+"What's something you did today that aligned with your values?",
+"Did you make a decision today that you feel good about?",
+"What's a mistake you made today that taught you something?",
+"Did you help yourself feel better today? How?"
+ ]},
+  {"id": 4,
+    "category":"Surprises and Unexpected Delights",
+ "prompts":[
+    "Did something unexpected happen today that made you happy?",
+"What's a surprise you received today, big or small?",
+"Did you discover something new today that you loved?",
+"Was there a moment today when you felt truly surprised?",
+"Did someone do something kind for you that you didn't expect?",
+"What's a coincidence or serendipity you experienced today?",
+"Did you stumble upon something beautiful or inspiring today?",
+"Was there a moment today when you felt a sense of wonder?",
+"Did you try something new today that pleasantly surprised you?",
+"What's a small joy that caught you off guard today?"
+ ]},
+  {"id": 5,
+    "category":"Reflection and Gratitude",
+ "prompts":[
+    "What's one thing you're grateful for today that you often take for granted?",
+"Did you take a moment today to appreciate where you are in life?",
+"What's something in your life that you're grateful exists?",
+"Did you feel a sense of peace or contentment today? When was it?",
+"What's a memory from today that you want to hold onto?",
+"Did you do something today that made the world a little better?",
+"What's a place or environment you're grateful to have experienced today?",
+"Did you feel a sense of belonging today? What contributed to that?",
+"What's something you're looking forward to tomorrow, based on today?",
+"If today had a theme or a word that described it, what would it be?"
+ ]}
+]

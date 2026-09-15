@@ -1,0 +1,132 @@
+.entryPage{
+    min-height: 100%;
+    width: 100%;
+}
+
+
+.entrySubmission{
+    min-height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10% repeat(5, 1fr) 10%;
+    grid-template-rows: 1rem auto auto auto 1rem;
+    gap: 20px;
+    --dark-blue: #062B79;
+    --med-blue: #16498A;
+    --light-blue: #5995B7;
+    --dark-yellow: #F1B351;
+    --med-yellow: #FDE050;
+    --light-yellow: #FAFBBD;
+}
+
+.submittedJournalBackground{
+    min-height: 100%;
+    width: 100%;
+    background-image:  linear-gradient(135deg, var(--light-yellow), var(--med-yellow), var(--dark-yellow));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submittedJournalCelebration{
+    width: auto;
+    background-color: rgba(255, 255, 255, .7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#congratsHeader{
+    animation-name: congrats;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes congrats{
+    50%{
+        transform: scale(1.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.pastEntryDisplay{
+    grid-column: 3 / 6;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.promptDisplayArea{
+    grid-column: 3 / 6;
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.entrySubmissionForm{
+    background-color: var(--light-yellow);
+    min-height: 100%;
+    width: 100%;
+    grid-column: 3/ 6;
+    grid-row: 4/ 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    justify-content: space-around;
+    gap: 15px;
+    padding: 15px;
+}
+
+#title{
+    font-family: 'courier prime', serif;
+}
+
+#entryText{
+    font-family: 'courier prime', serif;
+}
+
+#dateInput{
+    font-family: 'courier prime', serif;
+
+}
+
+.entrySubmissionForm textarea{
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    min-height: 150px;
+    width: 90%;
+    field-sizing: content;
+    resize: none;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+}
+
+
+.entrySubmission.entrySubmissionBackground1{
+    background-image: linear-gradient(135deg, var(--dark-blue), var(--med-blue), var(--light-blue));
+    background-size: cover;
+}
+
+.entrySubmission.entrySubmissionBackground2{
+    background-image: linear-gradient(135deg, var(--med-blue), var(--light-blue), var(--light-yellow));
+}
+
+.entrySubmission.entrySubmissionBackground3{
+    background-image: linear-gradient(135deg, var(--light-blue), var(--light-yellow), var(--med-yellow));
+}
+
+.entrySubmission.entrySubmissionBackground4{
+    background-image: linear-gradient(135deg, var(--light-yellow), var(--med-yellow), var(--dark-yellow));
+}

@@ -1,0 +1,7 @@
+.mainComponent {
+   grid-area: MainComponent;
+   width: 100%;
+   min-height: 0;
+   height: auto;
+   display: grid;
+}

@@ -1,0 +1,53 @@
+.aboutBackground{
+    background-image: linear-gradient(135deg, #5995B7, #FAFBBD, #FDE050);
+    min-height: 100%;
+    width: 100%;
+}
+
+.aboutPage{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutIntro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, .5);
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.aboutTable{
+    border-collapse: collapse ;
+    background-color: rgba(255, 255, 255, .7);
+    border-top-left-radius: px;
+    max-width: 90%;
+}
+
+td, th{
+    border: 1px solid rgba(50, 50, 50);
+    padding: 10px;
+}
+
+#aboutWrapUp{
+    display: flex;
+    max-width: 66%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+a {
+    color:  #5995B7;
+}
+
+a:visited {
+    color: #062B79;
+}

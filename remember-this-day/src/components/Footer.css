@@ -1,0 +1,7 @@
+.footerDisplay {
+    grid-area: 'Footer';
+    display: flex;
+    align-items: center;
+    white-space:pre;
+    justify-content: center;
+}

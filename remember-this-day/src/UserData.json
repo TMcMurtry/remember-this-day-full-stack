@@ -1,0 +1,43 @@
+{ "userCount": 2,
+    "userProfiles":
+    [
+        {"id": 1, 
+        "name":"TestUser1",
+        "membershipStartDate": "2026-07-01T20:03:07.039Z",
+        "username": "Username1",
+        "password": "Password1",
+        "numberOfEntries": 3,
+        "email": "email1@email.com",
+        "entries": [
+            {"title": "Saw dog",
+            "date": "2026-07-04",
+            "entry":"I saw a cute puppy today!"},
+            {"title": null,
+            "date": "2026-07-03",
+            "entry":"A butterfly landed on my notebook!"},
+            {"title": "Stranger compliment",
+            "date": "2026-07-02",
+            "entry":"Someone said my outfit looked nice!"}
+        ]
+    },
+     {"id": 2, 
+        "name":"TestUser2",
+        "membershipStartDate": "2026-06-30T20:03:07.039Z",
+        "username": "Username2",
+        "password": "Password2",
+        "numberOfEntries": 3,
+        "email": "email2@email.com",
+        "entries": [
+            {"title": "Saw cat",
+            "date": "2026-07-04",
+            "entry":"I saw a cute kitten today!"},
+            {"title": null,
+            "date": "2026-07-03",
+            "entry":"A ladybug landed on my notebook!"},
+            {"title": "Stranger compliment",
+            "date": "2026-07-02",
+            "entry":"Someone said my backpack looks cool!"}
+        ]
+    }
+    ]
+}

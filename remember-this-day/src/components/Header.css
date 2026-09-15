@@ -1,0 +1,52 @@
+
+.headerDisplay{
+    grid-area: Header;
+    
+    
+}
+
+.mainTitle{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    padding: 10px;
+}
+
+.mainTitle h1{
+    margin-bottom: 0px;
+    margin-right: auto;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.mainTitle p{
+    padding: 20px;
+    margin-right: auto;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#logoutButton{
+    margin-right: 0%;
+    margin-left: auto;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+nav{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 15px;
+    white-space: pre;
+    gap: 20px;
+}
+
+link {
+    color:  #062B79;
+}
+
+link:visited{
+    color: #F1B351;
+}

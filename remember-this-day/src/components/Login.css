@@ -1,0 +1,36 @@
+.loginPage{
+    background-image: url('images/Sunrise.png');
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr)
+
+}
+
+@media (max-width: 1200px) {
+    .loginPage{
+        background-image: url('images/Sunrise.png');
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(6, 1fr)
+    }
+}
+
+.loginForm{
+    background-color: rgba(255, 255, 255, .5);
+    grid-column-start: 2 ;
+    grid-row: 3/5 ;
+    border-radius:15px;
+    display: grid;
+    justify-items: center;
+    padding: 15px;
+}
+
+.loginForm button{
+    margin: 20px;
+}

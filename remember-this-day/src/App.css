@@ -1,0 +1,75 @@
+:root{
+    background-color:white;
+    color: var(--dark-blue);
+    --dark-blue: #062B79;
+    --med-blue: #16498A;
+    --light-blue: #5995B7;
+    --dark-yellow: #F1B351;
+    --med-yellow: #FDE050;
+    --light-yellow: #FAFBBD;
+    
+}
+
+html, body, #root{
+    min-height: 100vh;
+    height: auto;
+    width: 100vw;
+    margin: 0%;
+}
+
+.app {
+    display: grid;
+    grid-template-areas: 
+        "Header"
+        "MainComponent"
+        "Footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    height: auto;
+    width: 100vw;
+    font-family: 'Libre Baskerville', 'serif';
+}
+
+
+
+button{
+    background-color: var(--dark-blue);
+    border-radius: 6px;
+    color: white;
+    padding: 10px;
+    border: 1px;
+    transition-duration: 1s;
+}
+
+button:hover{
+    animation-name: colorChange;
+    animation-duration: 5s;
+}
+
+@keyframes colorChange {
+    0%{
+        transition: ease-in-out;
+        background-color: var(--dark-blue);
+    }
+    20%{
+        transition: ease-in-out;        
+        background-color: var(--med-blue);
+    }
+    40%{
+        transition: ease-in-out;
+        background-color: var(--light-blue);
+    }
+    60%{
+        transition: ease-in-out;
+        background-color: var(--light-yellow);
+        color: #062B79;
+    }
+    80%{
+        transition: ease-in-out;
+        background-color: var(--med-yellow);
+    }
+    100%{
+        transition: ease-in-out;
+        background-color: var(--dark-yellow);
+    }
+}
