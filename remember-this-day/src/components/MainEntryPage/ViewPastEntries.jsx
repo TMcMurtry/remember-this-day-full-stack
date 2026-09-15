@@ -29,7 +29,7 @@ export default function ViewPastEntries({currentUser, backgroundSelector, setBac
         setBackgroundSelector(backgroundSelector + 1)
         } catch (error){
             setEntryDisplayFailure(true);
-            setEntryFailureMessage(error);
+            setEntryFailureMessage(error.message);
         }
     }   
 

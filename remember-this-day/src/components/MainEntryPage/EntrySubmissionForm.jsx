@@ -43,7 +43,7 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
             
         } catch (error) {
             setsubmissionFail(true);
-            setsubmissionFailMessage(error);
+            setsubmissionFailMessage(error.message);
         }
 
     }

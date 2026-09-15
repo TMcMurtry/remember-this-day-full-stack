@@ -36,7 +36,7 @@ export default function Login({setIsLoggedIn, setCurrentUser}){
            
         } catch (error){
             setLoginFail(true);
-            setLoginErrorMessage(error);
+            setLoginErrorMessage(error.message);
         }
     }
 

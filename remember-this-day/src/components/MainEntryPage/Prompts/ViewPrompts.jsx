@@ -32,7 +32,7 @@ export default function ViewPrompts({promptDisplay, setPromptDisplay}){
         setPromptDisplay(true);
         } catch (error){
             setErrorDisplay(true);
-            setErrorMessage(error);
+            setErrorMessage(error.errorMessage);
         }
     }   
 
@@ -54,7 +54,7 @@ export default function ViewPrompts({promptDisplay, setPromptDisplay}){
         setShownPrompt(prompts[randomPrompt].promptText)
         } catch (error) {
             setErrorDisplay(true);
-            setErrorMessage(error);
+            setErrorMessage(error.message);
         }
     }
 
