@@ -32,6 +32,8 @@ export default function Login({setIsLoggedIn, setCurrentUser}){
             if (foundUser.password === trimmedPasswordInput){
                 setIsLoggedIn(true);
                 setCurrentUser(foundUser);
+            } else {
+                throw new Error(`Username or Password invalid`)
             }
            
         } catch (error){
