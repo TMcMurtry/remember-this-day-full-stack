@@ -19,7 +19,7 @@ export default function ViewPrompts({promptDisplay, setPromptDisplay}){
 
     async function promptDisplayFunction(){
         try {
-        const response = await fetch("http:localhost:8080/categories");
+        const response = await fetch("http://localhost:8080/categories");
         const data = await response.json();
         if (!response.ok){
             throw new Error(`HTTP error: ${response.status} - could not connect to the database`)

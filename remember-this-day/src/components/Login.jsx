@@ -17,7 +17,7 @@ export default function Login({setIsLoggedIn, setCurrentUser}){
         ev.preventDefault();
         try {
             let foundUser;
-            const response = await fetch("http:localhost:8080/users");
+            const response = await fetch("http://localhost:8080/users");
             const data = await response.json();
             if(!response.ok){
                 throw new Error(`HTTP error: ${response.status} - could not connect to the database`)
