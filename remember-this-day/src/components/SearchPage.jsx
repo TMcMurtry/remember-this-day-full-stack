@@ -6,12 +6,9 @@ export default function EntrySubmission({currentUser}){
     const [entries, setEntries] = useState("");
     const [searchError, setSearchError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-
-    useEffect(() => { 
-        findEntries();
-    }, []);
-
-
+    const [searchInput, setSearchInput] = useState("");
+    const handleSearchInput = (ev) => setSearchInput(ev.target.value);
+    
     async function findEntries() {
         try {
         const response = await fetch("http:localhost://8080/entries/user" + currentUser.id);
@@ -25,10 +22,19 @@ export default function EntrySubmission({currentUser}){
             setErrorMessage(error.message);
         }
     }
+    
+    useEffect(() => { 
+        findEntries();
+    }, []);
+
+
 
 
     return(
-
-
-
+        <div className='searchPage'>
+            <h2>Search for a past entry</h2>
+            <label htmlFor='searchField'>
+                <input name="searchField" id="searchField" type="text" value={searchInput} onChange={handleSearchInput} placeholder="Enter Title"/>
+            </label>
+        </div>
     )};
