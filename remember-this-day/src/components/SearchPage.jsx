@@ -1,10 +1,15 @@
 import './EntrySubmission.css';
-import { useState useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './SearchPage.css';
 
 export default function EntrySubmission({currentUser}){
     const [entries, setEntries] = useState("");
+    const [searchError, setSearchError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => { 
+        findEntries();
+    }, []);
 
 
     async function findEntries() {
@@ -14,9 +19,9 @@ export default function EntrySubmission({currentUser}){
         setEntries(data);
         if (!response.ok){
             throw new Error(`HTTP error: ${response.status} - could not connect to the database`)
-            }
-        
+            }   
         } catch (error){
+            setSearchError(true);
             setErrorMessage(error.message);
         }
     }
