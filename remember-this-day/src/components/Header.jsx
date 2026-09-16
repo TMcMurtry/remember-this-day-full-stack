@@ -22,6 +22,7 @@ export default function Header({isLoggedIn, setIsLoggedIn}){
                 <Link to="/">Entry Page</Link>
                 <Link to="/about">About this application</Link>
                 <Link to="/Optimizing">How to make the most of your journal</Link>
+                <Link to="/SearchPage">Search Page</Link>
             </nav>
             }   
         </div>

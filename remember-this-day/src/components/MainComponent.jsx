@@ -4,6 +4,7 @@ import AboutPage from './AboutPage';
 import EntrySubmission from './MainEntryPage/EntrySubmission'
 import Optimizing from './Optimizing';
 import './MainComponent.css'
+import SearchPage from './SearchPage'
 
 
 export default function MainComponent({currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn}){
@@ -20,6 +21,7 @@ export default function MainComponent({currentUser, setCurrentUser, isLoggedIn, 
           <Route path="/" element={<EntrySubmission currentUser={currentUser} setCurrentUser={setCurrentUser} />}/>
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/optimizing" element={<Optimizing/>}/>
+          <Route path="/SearchPage" element={<SearchPage currentUser={currentUser}/>}/>
         </Routes>
       }
       </div>
