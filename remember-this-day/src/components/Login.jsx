@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Login.css'
 
-export default function Login({setIsLoggedIn, setCurrentUser}){
+export default function Login({setIsLoggedIn, setCurrentUser, setNewUser}){
  
     const [usernameInput, setUsernameInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
@@ -59,6 +59,7 @@ export default function Login({setIsLoggedIn, setCurrentUser}){
                 {loginFail && <p>{loginErrorMessage}</p>}
                 <button name="login" id="login" type="submit" >Log In</button>
             </form>
+            <p onClick={}
         </div>
     )
 }

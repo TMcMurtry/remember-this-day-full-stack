@@ -27,7 +27,9 @@ export default function EntrySubmission({currentUser}){
         findEntries();
     }, []);
 
-
+    //  useEffect(() => { 
+    //     findEntries();
+    // }, [searchInput]);
 
 
     return(
