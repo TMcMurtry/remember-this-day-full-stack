@@ -1,4 +1,3 @@
-import './EntrySubmission.css';
 import { useState, useEffect } from 'react';
 import './SearchPage.css';
 

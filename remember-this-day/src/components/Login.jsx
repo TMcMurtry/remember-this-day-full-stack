@@ -42,6 +42,9 @@ export default function Login({setIsLoggedIn, setCurrentUser, setNewUser}){
         }
     }
 
+    function handleNewUser(){
+        setNewUser(true);
+    }
   
 
     return(
@@ -58,8 +61,8 @@ export default function Login({setIsLoggedIn, setCurrentUser, setNewUser}){
                 </label>
                 {loginFail && <p>{loginErrorMessage}</p>}
                 <button name="login" id="login" type="submit" >Log In</button>
+                <p onClick={handleNewUser}>New User? Click here</p>
             </form>
-            <p onClick={}
         </div>
     )
 }
