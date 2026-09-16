@@ -44,7 +44,7 @@ export default function AddEditUser({CurrentUser}){
                     value={confirmPasswordInput} onChange={handleConfirmPasswordChange} placeholder="Re-Enter Password" required/>
                 </label>
                 {loginFail && <p>{loginErrorMessage}</p>}
-                <button name="login" id="login" type="submit" >Log In</button>
+                <button name="submit" id="submit" type="submit" >Submit</button>
             </form>
         </div>
     )
