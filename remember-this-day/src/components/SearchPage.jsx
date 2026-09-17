@@ -5,6 +5,7 @@ export default function EntrySubmission({currentUser}){
     const [entries, setEntries] = useState("");
     const [searchError, setSearchError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [noMatch, setNoMatch] = useState("");
     const [searchInput, setSearchInput] = useState("");
     const [matchingEntries, setMatchingEntries] = useState("");
     const [chosenEntry, setChosenEntry] = useState("");
@@ -28,20 +29,18 @@ export default function EntrySubmission({currentUser}){
         loadEntries();
     }, []);
 
-    // function searchInEntry(entry){
-    //     if (entry.entryText.contains(searchInput)) {
-    //         return entry;
-    //     }
-    // }
-
      useEffect(() => { 
         setMatchingEntries(entries.filter( (entry) => {if (entry.entryText.contains(searchInput)) {
             return entry;
      }}))
-        setMatchingEntries(matchingEntries + entries.filter( (entry) => {if (entry.title.contains(searchInput)) {
-            return entry;
-     }}))
+        matchingEntries.length === 0 ? setNoMatch("No Entries Found") :
+        setNoMatch("");
+
     }, [searchInput]);
+
+    async function editEntry(){
+        
+    }
 
 
     return(
@@ -50,12 +49,18 @@ export default function EntrySubmission({currentUser}){
             <label htmlFor='searchField'>
                 <input name="searchField" id="searchField" type="text" value={searchInput} onChange={handleSearchInput} placeholder="Enter Title"/>
             </label>
-            <div className='searchResultList'>
-            {matchingEntries.map((entry) => <p>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </p> )}
-            </div>
+            {noMatch && <p>{noMatch}</p>}
+            <li>
+            {matchingEntries.map((entry) => <ul onClick={selectEntry}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </ul> )}
+            </li>
             <div className='chosenSearchResult'>
                 <h4>Edit or Remove Entry</h4>
-                <P>Date: {entr</P>
+                <P>Date: {chosenEntry.date}</P>
+                <p>Title: {chosenEntry.title}</p>
+                <p>Entry: {chosenEntry.entryText}</p>
+                <button name="edit" id="edit" type='button' onClick={editEntry}>Edit</button> 
+                <button name="delete" id="delete" type='button' onClick={deleteEntry}>Delete</button> 
+
             </div>
         </div>
     )};
