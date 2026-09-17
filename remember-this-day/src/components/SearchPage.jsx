@@ -7,6 +7,7 @@ export default function EntrySubmission({currentUser}){
     const [errorMessage, setErrorMessage] = useState("");
     const [searchInput, setSearchInput] = useState("");
     const [matchingEntries, setMatchingEntries] = useState("");
+    const [chosenEntry, setChosenEntry] = useState("");
     const handleSearchInput = (ev) => setSearchInput(ev.target.value);
     
     async function loadEntries() {
@@ -49,6 +50,12 @@ export default function EntrySubmission({currentUser}){
             <label htmlFor='searchField'>
                 <input name="searchField" id="searchField" type="text" value={searchInput} onChange={handleSearchInput} placeholder="Enter Title"/>
             </label>
-
+            <div className='searchResultList'>
+            {matchingEntries.map((entry) => <p>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </p> )}
+            </div>
+            <div className='chosenSearchResult'>
+                <h4>Edit or Remove Entry</h4>
+                <P>Date: {entr</P>
+            </div>
         </div>
     )};
