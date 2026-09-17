@@ -17,12 +17,12 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
     async function postEntry(ev){
         ev.preventDefault();
         try {
-            const post = fetch("http://localhost:8080", {method: "POST",
+            const post = await fetch("http://localhost:8080/entries", {method: "POST",
                 headers: {
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    id: currentUser.id,
+                    user: currentUser.id,
                     title: entryTitle,
                     entryText: entryTextBody,
                     date: entryDate,
@@ -31,7 +31,7 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
                 })
             })
             if (!post.ok){
-                throw new Error(`Database connection error, entry was unable to be sent`)
+                throw new Error(`Database connection error, entry was unable to be sent`);
             }
             
             setEntryTitle("");

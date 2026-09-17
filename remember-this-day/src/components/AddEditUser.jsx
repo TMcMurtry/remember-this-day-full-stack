@@ -1,22 +1,57 @@
 import { useEffect, useState } from 'react'
 import './Login.css'
 
-export default function AddEditUser({CurrentUser}){
+export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
     const [emailInput, setEmailInput] = useState("");
     const [usernameInput, setUsernameInput] = useState("");
     const [nameInput, setNameInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
     const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
+    const [submissionFail, setSubmissionFail] = useState(false);
+    const [submissionFailMessage, setsubmissionFailMessage] = useState("");
     const handleEmailChange = (ev) => setEmailInput(ev.target.value);
     const handleNameChange = (ev) => setNameInput(ev.target.value);
     const handleUsernameChange = (ev) => setUsernameInput(ev.target.value);
     const handlePasswordChange = (ev) => setPasswordInput(ev.target.value);
     const handleConfirmPasswordChange = (ev) => setConfirmPasswordInput(ev.target.value);
 
+    useEffect(() => { 
+        if(isLoggedIn){
+            setEmailInput(currentUser.email);
+            setNameInput(currentUser.name);
+            setUsernameInput(currentUser.username);
+            setPasswordInput(currentUser.password);
+            setConfirmPasswordInput(currentUser.password);
+        }
+    }, []);
 
-
-    async function createUser() {
-        
+    async function createUser(ev){
+        ev.preventDefault();
+        try {
+            if (passwordInput != confirmPasswordInput){
+                throw new Error(`Passwords must match`);
+            }
+            const post = await fetch("http://localhost:8080/users", {method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: emailInput,
+                    username: usernameInput,
+                    passwordInput: passwordInput,
+                    fullName: nameInput,
+                    memberSince: new Date().toISOString(),
+                    previouslyDisplayed: false
+                })
+            }) 
+            if (!post.ok){
+                throw new Error(`Database connection error, entry was unable to be sent`);
+            }
+            
+        } catch (error) {
+            setSubmissionFail(true);
+            setsubmissionFailMessage(error.message);
+        }
     }
 
  return(
@@ -43,7 +78,7 @@ export default function AddEditUser({CurrentUser}){
                     <input id="confirmPassword" name="confirmPassword" type="password" 
                     value={confirmPasswordInput} onChange={handleConfirmPasswordChange} placeholder="Re-Enter Password" required/>
                 </label>
-                {loginFail && <p>{loginErrorMessage}</p>}
+                {submissionFail && <p>{submissionFailMessage}</p>}
                 <button name="submit" id="submit" type="submit" >Submit</button>
             </form>
         </div>

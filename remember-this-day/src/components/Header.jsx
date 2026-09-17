@@ -1,9 +1,13 @@
 import { Link } from "react-router"
 import './Header.css'
 
-export default function Header({isLoggedIn, setIsLoggedIn}){
+export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
 
     const logout = () => setIsLoggedIn(false);
+
+    function handleModifyUser(){
+        setModifyUser(true);
+    }
 
     return(
         <div className="headerDisplay">
@@ -11,6 +15,7 @@ export default function Header({isLoggedIn, setIsLoggedIn}){
                 <h1 >Remember This Day</h1>
                 <p>Journaling the happy moments</p>
             {isLoggedIn && <button type="button" id="logoutButton" onClick={logout}>Log Out</button>}
+            {isLoggedIn && <p onClick={handleModifyUser}>Profile</p>}
             </div>
             {!isLoggedIn ? 
             <nav className="loggedOutNav">
