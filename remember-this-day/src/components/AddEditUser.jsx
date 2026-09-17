@@ -47,18 +47,50 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
             if (!post.ok){
                 throw new Error(`Database connection error, entry was unable to be sent`);
             }
+
         } catch (error) {
             setSubmissionFail(true);
             setsubmissionFailMessage(error.message);
         }
     }
 
-    async function modifyUserInfo() {
-        
+    async function modifyUserInfo(ev) {
+         ev.preventDefault();
+        try {
+            if (passwordInput != confirmPasswordInput){
+                throw new Error(`Passwords must match`);
+            }
+            const post = await fetch("http://localhost:8080/users", {method: "PUT",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: emailInput,
+                    username: usernameInput,
+                    passwordInput: passwordInput,
+                    fullName: nameInput,
+                    memberSince: currentUser.memberSince,
+                    previouslyDisplayed: false,
+                    id: currentUser.id
+                })
+            }) 
+            if (!post.ok){
+                throw new Error(`Database connection error, entry was unable to be sent`);
+            }
+        } catch (error) {
+            setSubmissionFail(true);
+            setsubmissionFailMessage(error.message);
+        }
     }
 
     function updateUserinfo() {
         isLoggedIn ? modifyUserInfo() : createUser();
+        setEmailInput("");
+        setNameInput("");
+        setUsernameInput("");
+        setPasswordInput("");
+        setConfirmPasswordInput("");
+        setModifyUser(false);
     }
 
     function goBack() {
