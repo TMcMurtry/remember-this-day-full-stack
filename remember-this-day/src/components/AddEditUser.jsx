@@ -38,10 +38,9 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
                 body: JSON.stringify({
                     email: emailInput,
                     username: usernameInput,
-                    passwordInput: passwordInput,
-                    fullName: nameInput,
                     memberSince: new Date().toISOString(),
-                    previouslyDisplayed: false
+                    password: passwordInput,
+                    fullName: nameInput,
                 })
             }) 
             if (!post.ok){
@@ -65,13 +64,12 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
+                    id: currentUser.id,
                     email: emailInput,
                     username: usernameInput,
-                    passwordInput: passwordInput,
-                    fullName: nameInput,
                     memberSince: currentUser.memberSince,
-                    previouslyDisplayed: false,
-                    id: currentUser.id
+                    password: passwordInput,
+                    fullName: nameInput,
                 })
             }) 
             if (!post.ok){

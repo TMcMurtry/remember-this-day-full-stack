@@ -39,8 +39,31 @@ export default function EntrySubmission({currentUser}){
     }, [searchInput]);
 
     async function editEntry(){
-        
+        try{
+            const response = await fetch("http://localhost:8080/entries", {method: "PUT",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: chosenEntry.id,
+                    title: chosenEntry.title,
+                    entryText: chosenEntry.entryText,
+                    date: chosenEntry.date,
+                    dateCreated: chosenEntry.dateCreated,
+                    previouslyDisplayed: false
+                })
+            }) 
+            if (!response.ok){
+                throw new Error(`Could not connect to the database`)
+            }
+            setChosenEntry("");
+        } catch (error) {
+            setSearchError(true);
+            setErrorMessage(error.message);
+        }
     }
+
+    
 
 
     return(
