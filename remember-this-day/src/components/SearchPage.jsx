@@ -96,32 +96,36 @@ export default function EntrySubmission({currentUser}){
 
     return(
         <div className='searchPage'>
-            <h2>Search For A Past Entry</h2>
-            <label htmlFor='searchField'>
-                <input name="searchField" id="searchField" type="text" value={searchInput} onChange={handleSearchInput} placeholder="Search..."/>
-            </label>
-            {searchError && <p>{errorMessage}</p>}
-            {noMatch && <p>{noMatch}</p>}
-            <ul>
-            {matchingEntries.map((entry) => <li onClick={() => setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </li> )}
-            </ul>
-            {chosenEntry &&
-                <form className='chosenSearchResult' >
-                    <h4>Edit or Remove Entry</h4>
-                    <label htmlFor='title'>
-                        <input name="title" id="title" type="text" value={titleField} onChange={handleTitleChange} placeholder="Enter Title"/>
-                    </label>
-                    <label htmlFor='entry'>
-                        <input name="entry" id="entry" type="text" value={entryField} onChange={handleEntryChange} placeholder="Journal Entry"/>
-                    </label>
-                    <label htmlFor='date'>
-                        <input name="date" id="date" type='date' value={dateField} onChange={handleDateChange} placeholder="Date"/>
-                    </label>
-                    <button name="edit" id="edit" type='button' onClick={editEntry}>Edit</button> 
-                    <button name="delete" id="delete" type='button' onClick={deleteEntry}>Delete</button> 
-                    {editSuccess && <p>{editSuccess}</p>}
-                    {deleteSuccess && <p>{deleteSuccess}</p>}
-                </form>
-            }       
+            <div className='searchEntries'>
+                <h2>Search For A Past Entry</h2>
+                <label htmlFor='searchField'>
+                    <input name="searchField" id="searchField" type="text" value={searchInput} onChange={handleSearchInput} placeholder="Search..."/>
+                </label>
+                {searchError && <p>{errorMessage}</p>}
+                {noMatch && <p>{noMatch}</p>}
+                <ul>
+                {matchingEntries.map((entry) => <li onClick={() => setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </li> )}
+                </ul>
+            </div>
+            <div className='chosenEntry'>
+                {chosenEntry &&
+                    <form className='chosenSearchResult' >
+                        <h4>Edit or Remove Entry</h4>
+                        <label htmlFor='title'>
+                            <input name="title" id="title" type="text" value={titleField} onChange={handleTitleChange} placeholder="Enter Title"/>
+                        </label>
+                        <label htmlFor='entry'>
+                            <input name="entry" id="entry" type="text" value={entryField} onChange={handleEntryChange} placeholder="Journal Entry"/>
+                        </label>
+                        <label htmlFor='date'>
+                            <input name="date" id="date" type='date' value={dateField} onChange={handleDateChange} placeholder="Date"/>
+                        </label>
+                        <button name="edit" id="edit" type='button' onClick={editEntry}>Edit</button> 
+                        <button name="delete" id="delete" type='button' onClick={deleteEntry}>Delete</button> 
+                        {editSuccess && <p>{editSuccess}</p>}
+                        {deleteSuccess && <p>{deleteSuccess}</p>}
+                    </form>
+                } 
+            </div>      
         </div>
     )};
