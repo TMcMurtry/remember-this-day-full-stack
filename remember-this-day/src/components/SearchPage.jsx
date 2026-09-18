@@ -21,7 +21,7 @@ export default function EntrySubmission({currentUser}){
     
     async function loadEntries() {
         try {
-        const response = await fetch(`http:localhost://8080/entries/user/${currentUser.id}`);
+        const response = await fetch(`http://localhost:8080/entries/user/${currentUser.id}`);
         const data = await response.json();
         setEntries(data);
         if (!response.ok){
@@ -38,17 +38,16 @@ export default function EntrySubmission({currentUser}){
     }, []);
 
      useEffect(() => { 
-        setMatchingEntries(entries.filter( (entry) => {if (entry.entryText.includes(searchInput)) {
-            return entry;
-     }}))
+        const matching = entries.filter( (entry) => entry.entryText.includes(searchInput)); 
+        setMatchingEntries(matching);
         matchingEntries.length === 0 ? setNoMatch("No Entries Found") :
         setNoMatch("");
 
-    }, [searchInput]);
+    }, [searchInput, entries]);
 
     async function editEntry(){
         try{
-            const response = await fetch("http://localhost:8080/entries" + chosenEntry.id, {method: "PUT",
+            const response = await fetch(`http://localhost:8080/entries/${chosenEntry.id}`, {method: "PUT",
                 headers: {
                     "Content-type": "application/json"
                 },
@@ -73,7 +72,7 @@ export default function EntrySubmission({currentUser}){
 
     async function deleteEntry(){
         try{
-            const response = await fetch("http://localhost:8080/entries" + chosenEntry.id, {method: "DELETE" }) 
+            const response = await fetch(`http://localhost:8080/entries/${chosenEntry.id}`, {method: "DELETE" }) 
             if (!response.ok){
                 throw new Error(`Could not connect to the database`)
             }
@@ -89,14 +88,14 @@ export default function EntrySubmission({currentUser}){
 
     return(
         <div className='searchPage'>
-            <h2>Search for a past entry</h2>
+            <h2>Search For A Past Entry</h2>
             <label htmlFor='searchField'>
-                <input name="searchField" id="searchField" type="text" value={searchInput} onChange={handleSearchInput} placeholder="Enter Title"/>
+                <input name="searchField" id="searchField" type="text" value={searchInput} onChange={handleSearchInput} placeholder="Search..."/>
             </label>
             {searchError && <p>{errorMessage}</p>}
             {noMatch && <p>{noMatch}</p>}
             <li>
-            {matchingEntries.map((entry) => <ul onClick={setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </ul> )}
+            {matchingEntries.map((entry) => <ul onClick={() => setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </ul> )}
             </li>
             {chosenEntry &&
                 <form className='chosenSearchResult' >
