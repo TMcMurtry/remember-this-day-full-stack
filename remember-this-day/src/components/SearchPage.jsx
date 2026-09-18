@@ -40,8 +40,7 @@ export default function EntrySubmission({currentUser}){
      useEffect(() => { 
         const matching = entries.filter( (entry) => entry.entryText.includes(searchInput)); 
         setMatchingEntries(matching);
-        matchingEntries.length === 0 ? setNoMatch("No Entries Found") :
-        setNoMatch("");
+        setNoMatch(matching.length === 0 ? "No Entries Found" : "");
 
     }, [searchInput, entries]);
 
@@ -84,7 +83,7 @@ export default function EntrySubmission({currentUser}){
         }
     }
     
-
+    
 
     return(
         <div className='searchPage'>
