@@ -61,7 +61,8 @@ export default function EntrySubmission({currentUser}){
                     entryText: entryField,
                     date: dateField,
                     dateCreated: chosenEntry.dateCreated,
-                    previouslyDisplayed: false
+                    previouslyDisplayed: "false",
+                    user: currentUser
                 })
             }) 
             if (!response.ok){
@@ -69,6 +70,7 @@ export default function EntrySubmission({currentUser}){
             }
             setChosenEntry("");
             setEditSuccess("Entry Successfully Updated")
+            loadEntries();
         } catch (error) {
             setSearchError(true);
             setErrorMessage(error.message);
@@ -83,6 +85,7 @@ export default function EntrySubmission({currentUser}){
             }
             setChosenEntry("");
             setDeleteSuccess("Entry Successfully Deleted")
+            loadEntries();
         } catch (error) {
             setSearchError(true);
             setErrorMessage(error.message);
