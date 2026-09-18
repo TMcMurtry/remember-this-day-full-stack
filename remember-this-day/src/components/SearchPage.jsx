@@ -37,12 +37,18 @@ export default function EntrySubmission({currentUser}){
         loadEntries();
     }, []);
 
-     useEffect(() => { 
+    useEffect(() => { 
         const matching = entries.filter( (entry) => entry.entryText.includes(searchInput)); 
         setMatchingEntries(matching);
         setNoMatch(matching.length === 0 ? "No Entries Found" : "");
 
     }, [searchInput, entries]);
+
+    useEffect(() => {
+        setTitleField(chosenEntry.title);
+        setEntryField(chosenEntry.entryText);
+        setDateField(chosenEntry.date);
+    }, [chosenEntry]);
 
     async function editEntry(){
         try{
@@ -51,9 +57,9 @@ export default function EntrySubmission({currentUser}){
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    title: chosenEntry.title,
-                    entryText: chosenEntry.entryText,
-                    date: chosenEntry.date,
+                    title: titleField,
+                    entryText: entryField,
+                    date: dateField,
                     dateCreated: chosenEntry.dateCreated,
                     previouslyDisplayed: false
                 })
@@ -93,9 +99,9 @@ export default function EntrySubmission({currentUser}){
             </label>
             {searchError && <p>{errorMessage}</p>}
             {noMatch && <p>{noMatch}</p>}
-            <li>
-            {matchingEntries.map((entry) => <ul onClick={() => setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </ul> )}
-            </li>
+            <ul>
+            {matchingEntries.map((entry) => <li onClick={() => setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </li> )}
+            </ul>
             {chosenEntry &&
                 <form className='chosenSearchResult' >
                     <h4>Edit or Remove Entry</h4>
