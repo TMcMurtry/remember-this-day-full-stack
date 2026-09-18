@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import './SearchPage.css';
 
 export default function EntrySubmission({currentUser}){
-    const [entries, setEntries] = useState("");
+    const [entries, setEntries] = useState([]);
     const [searchError, setSearchError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [noMatch, setNoMatch] = useState("");
     const [searchInput, setSearchInput] = useState("");
-    const [matchingEntries, setMatchingEntries] = useState("");
+    const [matchingEntries, setMatchingEntries] = useState([]);
     const [chosenEntry, setChosenEntry] = useState("");
     const [dateField, setDateField] = useState("");
     const [titleField, setTitleField] = useState("");
@@ -21,7 +21,7 @@ export default function EntrySubmission({currentUser}){
     
     async function loadEntries() {
         try {
-        const response = await fetch("http:localhost://8080/entries/user" + currentUser.id);
+        const response = await fetch(`http:localhost://8080/entries/user/${currentUser.id}`);
         const data = await response.json();
         setEntries(data);
         if (!response.ok){
@@ -38,7 +38,7 @@ export default function EntrySubmission({currentUser}){
     }, []);
 
      useEffect(() => { 
-        setMatchingEntries(entries.filter( (entry) => {if (entry.entryText.contains(searchInput)) {
+        setMatchingEntries(entries.filter( (entry) => {if (entry.entryText.includes(searchInput)) {
             return entry;
      }}))
         matchingEntries.length === 0 ? setNoMatch("No Entries Found") :
