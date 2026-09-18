@@ -44,7 +44,7 @@ export default function ViewPrompts({promptDisplay, setPromptDisplay}){
 
     async function resetPromptList(){
         try {
-        const promptsResponse = await fetch("http:localhost:8080/prompts/category/" + randomCategory);
+        const promptsResponse = await fetch(`http://localhost:8080/prompts/category/${randomCategory}`);
         const promptsData = await promptsResponse.json();
         if (!promptsResponse.ok){
             throw new Error(`HTTP error: ${promptsResponse.status} - could not connect to the database`)

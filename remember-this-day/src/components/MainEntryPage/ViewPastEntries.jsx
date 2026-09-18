@@ -16,7 +16,7 @@ export default function ViewPastEntries({currentUser, backgroundSelector, setBac
 
     async function entryDisplayFunction(){
         try {
-        const response = await fetch("http:localhost://8080/entries/user" + currentUser.id);
+        const response = await fetch(`http://localhost:8080/entries/user/${currentUser.id}`);
         const data = await response.json();
         if (!response.ok){
             throw new Error(`HTTP error: ${response.status} - could not connect to the database`)

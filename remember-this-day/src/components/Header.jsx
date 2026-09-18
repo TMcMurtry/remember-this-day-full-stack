@@ -15,7 +15,7 @@ export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
                 <h1 >Remember This Day</h1>
                 <p>Journaling the happy moments</p>
             {isLoggedIn && <button type="button" id="logoutButton" onClick={logout}>Log Out</button>}
-            {isLoggedIn && <p onClick={handleModifyUser}>Profile</p>}
+            {isLoggedIn && <button onClick={handleModifyUser} id="profileButton">Profile</button>}
             </div>
             {!isLoggedIn ? 
             <nav className="loggedOutNav">

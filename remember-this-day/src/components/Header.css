@@ -34,6 +34,14 @@
     grid-row: 1 / 2;
 }
 
+#profileButton{
+    margin-right: 0%;
+    margin-left: auto;
+    margin-top: auto;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
 nav{
     display: flex;
     justify-content: end;
@@ -47,6 +55,3 @@ link {
     color:  #062B79;
 }
 
-link:visited{
-    color: #F1B351;
-}
