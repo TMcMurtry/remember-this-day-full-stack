@@ -18,7 +18,7 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
     useEffect(() => { 
         if(isLoggedIn){
             setEmailInput(currentUser.email);
-            setNameInput(currentUser.name);
+            setNameInput(currentUser.fullName);
             setUsernameInput(currentUser.username);
             setPasswordInput(currentUser.password);
             setConfirmPasswordInput(currentUser.password);

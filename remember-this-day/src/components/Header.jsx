@@ -1,12 +1,15 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import './Header.css'
 
 export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
 
     const logout = () => setIsLoggedIn(false);
 
+    const navigate = useNavigate();
+
     function handleModifyUser(){
         setModifyUser(true);
+        navigate("/");
     }
 
     return(

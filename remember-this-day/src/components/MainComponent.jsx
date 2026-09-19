@@ -15,13 +15,13 @@ export default function MainComponent({currentUser, setCurrentUser, isLoggedIn, 
       <div className='mainComponent'>
         { !isLoggedIn ?
         <Routes>
-          { modifyUser ? <Route path="/" element={<AddEditUser  CurrentUser={currentUser} isLoggedIn={isLoggedIn} setModifyUser={setModifyUser}/>}/>
+          { modifyUser ? <Route path="/" element={<AddEditUser  currentUser={currentUser} isLoggedIn={isLoggedIn} setModifyUser={setModifyUser}/>}/>
           : <Route path="/" element={<Login  setCurrentUser={setCurrentUser} setIsLoggedIn={setIsLoggedIn} setModifyUser={setModifyUser}/>}/>}
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/optimizing" element={<Optimizing/>}/>
         </Routes> :
         <Routes>
-          { modifyUser ? <Route path="/" element={<AddEditUser  CurrentUser={currentUser} isLoggedIn={isLoggedIn} setModifyUser={setModifyUser}/>}/>
+          { modifyUser ? <Route path="/" element={<AddEditUser  currentUser={currentUser} isLoggedIn={isLoggedIn} setModifyUser={setModifyUser}/>}/>
           : <Route path="/" element={<EntrySubmission currentUser={currentUser} setCurrentUser={setCurrentUser} />}/>}
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/optimizing" element={<Optimizing/>}/>

@@ -56,7 +56,7 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
             </label>
             <label htmlFor="entryText"> Entry: <br/>
                 <textarea name="entryText" id="entryText" value={entryTextBody} onChange={handleEntryTextChange} 
-                cols={40} rows={6} placeholder="Type your entry here" required/>
+                placeholder="Type your entry here" required/>
             </label>
             <label htmlFor="dateInput">Date: <br/>
                 <input name="dateInput" id="dateInput" type="date" value={entryDate} onChange={handleDateChange} required/>
