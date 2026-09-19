@@ -57,18 +57,43 @@
 .pastEntryDisplay{
     grid-column: 3 / 6;
     grid-row: 2 / 3;
+    background-color: rgba(255, 255, 255, .5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.promptDisplayArea{
+    background-color: rgba(255, 255, 255, .5);
+    grid-column: 3 / 6;
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.promptDisplay{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.promptDisplayArea{
-    grid-column: 3 / 6;
-    grid-row: 3 / 4;
+.promptDisplay p{
+    text-align: center;
+}
+
+.promptDisplayButtons{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
 }
 
 .entrySubmissionForm{

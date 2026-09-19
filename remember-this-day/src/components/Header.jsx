@@ -2,13 +2,14 @@ import { Link, useNavigate } from "react-router"
 import './Header.css'
 
 export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
-
+    const navigate = useNavigate();
+    
     const logout = () => {
         setIsLoggedIn(false);
         setModifyUser(false);
+        navigate("/");
     };
 
-    const navigate = useNavigate();
 
     function handleModifyUser(){
         setModifyUser(true);
@@ -25,12 +26,12 @@ export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
             </div>
             {!isLoggedIn ? 
             <nav className="loggedOutNav">
-                <Link to="/">Log-In</Link>
+                <Link to="/">Main Page</Link>
                 <Link to="/about">About this application</Link>
                 <Link to="/Optimizing">How to make the most of your journal</Link>
             </nav> : 
             <nav className="loggedInNav">
-                <Link to="/">Entry Page</Link>
+                <Link to="/">Main Page</Link>
                 <Link to="/about">About this application</Link>
                 <Link to="/Optimizing">How to make the most of your journal</Link>
                 <Link to="/SearchPage">Search Page</Link>

@@ -78,12 +78,14 @@ export default function ViewPrompts({promptDisplay, setPromptDisplay}){
         <div className='promptDisplayArea'>
             { promptDisplay ? <div className='promptDisplay'><h2>Prompt Category: {shownCategory.categoryName}</h2>
                 <p>Prompt: {shownprompt.promptText}</p>
-                <label htmlFor='viewNewCategory'>
-                    <button name="viewNewCategory" id="viewNewCategory" type="button" onClick={changeCategory}>View Another Category</button>
-                </label>
-                <label htmlFor='viewNewPrompt'>
-                    <button name="viewNewPrompt" id="viewNewPrompt" type="button" onClick={newPromptSameCategory}>View Another Prompt In This Category</button>
-                </label>
+                <div className='promptDisplayButtons'>
+                    <label htmlFor='viewNewCategory'>
+                        <button name="viewNewCategory" id="viewNewCategory" type="button" onClick={changeCategory}>View Another Category</button>
+                    </label>
+                    <label htmlFor='viewNewPrompt'>
+                        <button name="viewNewPrompt" id="viewNewPrompt" type="button" onClick={newPromptSameCategory}>View Another Prompt In This Category</button>
+                    </label>
+                </div>
             </div>
             : <div className='promptButtonNoDisplay'>
                 <label htmlFor="viewPrompts">
