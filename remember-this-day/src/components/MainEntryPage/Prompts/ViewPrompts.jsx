@@ -19,59 +19,73 @@ export default function ViewPrompts({promptDisplay, setPromptDisplay}){
 
     async function promptDisplayFunction(){
         try {
-        const response = await fetch("http:localhost:8080/categories");
+        const response = await fetch("http://localhost:8080/categories");
         const data = await response.json();
         if (!response.ok){
             throw new Error(`HTTP error: ${response.status} - could not connect to the database`)
         }
+        const categoryIndex = random(data);
+        const selectedCategory = data[categoryIndex];
+
         setCategories(data);
-        setRandomCategory(random(data));
-        resetPromptList();
+        setRandomCategory(categoryIndex);
+        await resetPromptList(selectedCategory);
         
-        setShownCategory(categories[randomCategory].categoryName)
+        setShownCategory(selectedCategory);
         setPromptDisplay(true);
         } catch (error){
             setErrorDisplay(true);
-            setErrorMessage(error);
+            setErrorMessage(error.message);
         }
     }   
 
-    function changeCategory(){
-        setRandomCategory(random(categories));
-        setShownCategory(categories[randomCategory].categoryName)
-        resetPromptList();
+    async function changeCategory(){
+        const categoryIndex = random(categories);
+        const selectedCategory = categories[categoryIndex];
+
+        setRandomCategory(categoryIndex);
+        setShownCategory(selectedCategory)
+        await resetPromptList(selectedCategory);
     }
 
-    async function resetPromptList(){
+    async function resetPromptList(shownCategory){
         try {
-        const promptsResponse = await fetch("http:localhost:8080/prompts/category/" + randomCategory);
+        const promptsResponse = await fetch(`http://localhost:8080/prompts/category/${shownCategory.id}`);
         const promptsData = await promptsResponse.json();
         if (!promptsResponse.ok){
             throw new Error(`HTTP error: ${promptsResponse.status} - could not connect to the database`)
         }
+        const promptIndex = random(promptsData);
+        const selectedPrompt = promptsData[promptIndex];
+
         setPrompts(promptsData);
-        setRandomPrompt(random(prompts));
-        setShownPrompt(prompts[randomPrompt].promptText)
+        setRandomPrompt(promptIndex);
+        setShownPrompt(selectedPrompt)
         } catch (error) {
             setErrorDisplay(true);
-            setErrorMessage(error);
+            setErrorMessage(error.message);
         }
     }
 
     function newPromptSameCategory(){
-        setRandomPrompt(random(prompts));
-        setShownPrompt(prompts[randomPrompt].promptText)    }
+        const promptIndex = random(prompts);
+        const selectedPrompt = prompts[promptIndex];
+
+        setRandomPrompt(promptIndex);
+        setShownPrompt(selectedPrompt)    }
 
     return(
         <div className='promptDisplayArea'>
-            { promptDisplay ? <div className='promptDisplay'><h2>Prompt Category: {shownCategory}</h2>
-                <p>Prompt: {shownprompt}</p>
-                <label htmlFor='viewNewCategory'>
-                    <button name="viewNewCategory" id="viewNewCategory" type="button" onClick={changeCategory}>View Another Category</button>
-                </label>
-                <label htmlFor='viewNewPrompt'>
-                    <button name="viewNewPrompt" id="viewNewPrompt" type="button" onClick={newPromptSameCategory}>View Another Prompt In This Category</button>
-                </label>
+            { promptDisplay ? <div className='promptDisplay'><h2>Prompt Category: {shownCategory.categoryName}</h2>
+                <p>Prompt: {shownprompt.promptText}</p>
+                <div className='promptDisplayButtons'>
+                    <label htmlFor='viewNewCategory'>
+                        <button name="viewNewCategory" id="viewNewCategory" type="button" onClick={changeCategory}>View Another Category</button>
+                    </label>
+                    <label htmlFor='viewNewPrompt'>
+                        <button name="viewNewPrompt" id="viewNewPrompt" type="button" onClick={newPromptSameCategory}>View Another Prompt In This Category</button>
+                    </label>
+                </div>
             </div>
             : <div className='promptButtonNoDisplay'>
                 <label htmlFor="viewPrompts">

@@ -1,7 +1,7 @@
 
 .headerDisplay{
     grid-area: Header;
-    
+    width: 100%;
     
 }
 
@@ -28,8 +28,16 @@
 }
 
 #logoutButton{
-    margin-right: 0%;
+    margin-right: 20px;
     margin-left: auto;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+#profileButton{
+    margin-right: 20px;
+    margin-left: auto;
+    margin-top: auto;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 }
@@ -41,12 +49,10 @@ nav{
     padding: 15px;
     white-space: pre;
     gap: 20px;
+    margin-right: 20px;
 }
 
 link {
     color:  #062B79;
 }
 
-link:visited{
-    color: #F1B351;
-}

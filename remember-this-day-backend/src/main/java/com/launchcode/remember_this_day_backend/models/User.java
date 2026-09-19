@@ -14,7 +14,7 @@ public class User {
     private String password;
     private String fullName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    @OneToMany( mappedBy = "user")
     private java.util.List<Entry> entries;
 
     public User() {

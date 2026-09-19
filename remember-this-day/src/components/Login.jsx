@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Login.css'
 
-export default function Login({setIsLoggedIn, setCurrentUser}){
+export default function Login({setIsLoggedIn, setCurrentUser, setModifyUser}){
  
     const [usernameInput, setUsernameInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
@@ -17,7 +17,7 @@ export default function Login({setIsLoggedIn, setCurrentUser}){
         ev.preventDefault();
         try {
             let foundUser;
-            const response = await fetch("http:localhost:8080/users");
+            const response = await fetch("http://localhost:8080/users");
             const data = await response.json();
             if(!response.ok){
                 throw new Error(`HTTP error: ${response.status} - could not connect to the database`)
@@ -32,14 +32,19 @@ export default function Login({setIsLoggedIn, setCurrentUser}){
             if (foundUser.password === trimmedPasswordInput){
                 setIsLoggedIn(true);
                 setCurrentUser(foundUser);
+            } else {
+                throw new Error(`Username or Password invalid`)
             }
            
         } catch (error){
             setLoginFail(true);
-            setLoginErrorMessage(error);
+            setLoginErrorMessage(error.message);
         }
     }
 
+    function handleNewUser(){
+        setModifyUser(true);
+    }
   
 
     return(
@@ -56,6 +61,7 @@ export default function Login({setIsLoggedIn, setCurrentUser}){
                 </label>
                 {loginFail && <p>{loginErrorMessage}</p>}
                 <button name="login" id="login" type="submit" >Log In</button>
+                <p onClick={handleNewUser}>New User? Click here</p>
             </form>
         </div>
     )

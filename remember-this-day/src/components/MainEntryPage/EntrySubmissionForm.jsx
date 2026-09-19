@@ -17,21 +17,21 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
     async function postEntry(ev){
         ev.preventDefault();
         try {
-            const post = fetch("http://localhost:8080", {method: "POST",
+            const post = await fetch("http://localhost:8080/entries", {method: "POST",
                 headers: {
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    id: currentUser.id,
+                    user: currentUser,
                     title: entryTitle,
                     entryText: entryTextBody,
                     date: entryDate,
                     dateCreated: new Date().toISOString(),
-                    previouslyDisplayed: false
+                    previouslyDisplayed: "false"
                 })
             })
             if (!post.ok){
-                throw new Error(`Database connection error, entry was unable to be sent`)
+                throw new Error(`Database connection error, entry was unable to be sent`);
             }
             
             setEntryTitle("");
@@ -43,7 +43,7 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
             
         } catch (error) {
             setsubmissionFail(true);
-            setsubmissionFailMessage(error);
+            setsubmissionFailMessage(error.message);
         }
 
     }
@@ -52,11 +52,12 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
         <form className="entrySubmissionForm" onSubmit={postEntry}>
             <h2>Submit a new journal entry!</h2>
             <label htmlFor="title">Title: <br/>
-                <input name="title" id="title" type="text" value={entryTitle} onChange={handleTitleChange} placeholder="Enter Title"/>
+                <input name="title" id="title" type="text" value={entryTitle} onChange={handleTitleChange} 
+                placeholder="Enter Title" required/>
             </label>
-            <label htmlFor="entryText">
+            <label htmlFor="entryText"> Entry: <br/>
                 <textarea name="entryText" id="entryText" value={entryTextBody} onChange={handleEntryTextChange} 
-                cols={40} rows={6} placeholder="Type your entry here" required/>
+                placeholder="Type your entry here" required/>
             </label>
             <label htmlFor="dateInput">Date: <br/>
                 <input name="dateInput" id="dateInput" type="date" value={entryDate} onChange={handleDateChange} required/>

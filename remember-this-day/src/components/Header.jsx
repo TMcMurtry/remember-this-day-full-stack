@@ -1,9 +1,20 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import './Header.css'
 
-export default function Header({isLoggedIn, setIsLoggedIn}){
+export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
+    const navigate = useNavigate();
+    
+    const logout = () => {
+        setIsLoggedIn(false);
+        setModifyUser(false);
+        navigate("/");
+    };
 
-    const logout = () => setIsLoggedIn(false);
+
+    function handleModifyUser(){
+        setModifyUser(true);
+        navigate("/");
+    }
 
     return(
         <div className="headerDisplay">
@@ -11,17 +22,19 @@ export default function Header({isLoggedIn, setIsLoggedIn}){
                 <h1 >Remember This Day</h1>
                 <p>Journaling the happy moments</p>
             {isLoggedIn && <button type="button" id="logoutButton" onClick={logout}>Log Out</button>}
+            {isLoggedIn && <button onClick={handleModifyUser} id="profileButton">Profile</button>}
             </div>
             {!isLoggedIn ? 
             <nav className="loggedOutNav">
-                <Link to="/">Log-In</Link>
+                <Link to="/">Main Page</Link>
                 <Link to="/about">About this application</Link>
                 <Link to="/Optimizing">How to make the most of your journal</Link>
             </nav> : 
             <nav className="loggedInNav">
-                <Link to="/">Entry Page</Link>
+                <Link to="/">Main Page</Link>
                 <Link to="/about">About this application</Link>
                 <Link to="/Optimizing">How to make the most of your journal</Link>
+                <Link to="/SearchPage">Search Page</Link>
             </nav>
             }   
         </div>
