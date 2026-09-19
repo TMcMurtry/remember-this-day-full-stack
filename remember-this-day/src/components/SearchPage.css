@@ -65,6 +65,8 @@ margin: 20px;
     max-height: 500px;
     resize: none;
     overflow-y: auto;
+    min-width: 200px;
+
 }
 
 .formButtons{

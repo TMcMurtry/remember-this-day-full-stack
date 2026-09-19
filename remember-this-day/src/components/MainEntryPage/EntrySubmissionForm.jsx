@@ -52,7 +52,8 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
         <form className="entrySubmissionForm" onSubmit={postEntry}>
             <h2>Submit a new journal entry!</h2>
             <label htmlFor="title">Title: <br/>
-                <input name="title" id="title" type="text" value={entryTitle} onChange={handleTitleChange} placeholder="Enter Title"/>
+                <input name="title" id="title" type="text" value={entryTitle} onChange={handleTitleChange} 
+                placeholder="Enter Title" required/>
             </label>
             <label htmlFor="entryText"> Entry: <br/>
                 <textarea name="entryText" id="entryText" value={entryTextBody} onChange={handleEntryTextChange} 
