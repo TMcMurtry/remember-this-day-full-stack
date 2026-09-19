@@ -9,6 +9,7 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
     const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
     const [submissionFail, setSubmissionFail] = useState(false);
     const [submissionFailMessage, setsubmissionFailMessage] = useState("");
+    const [submissionSuccessMessage, setSubmissionSuccessMessage] = useState("");
     const handleEmailChange = (ev) => setEmailInput(ev.target.value);
     const handleNameChange = (ev) => setNameInput(ev.target.value);
     const handleUsernameChange = (ev) => setUsernameInput(ev.target.value);
@@ -25,8 +26,7 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
         }
     }, []);
 
-    async function createUser(ev){
-        ev.preventDefault();
+    async function createUser(){
         try {
             if (passwordInput != confirmPasswordInput){
                 throw new Error(`Passwords must match`);
@@ -54,6 +54,10 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
             }) 
             if (!post.ok){
                 throw new Error(`Database connection error, entry was unable to be sent`);
+            } else {
+                setSubmissionFail(false);
+                setsubmissionFailMessage("");
+                setSubmissionSuccessMessage('Profile created! Press "Back" to proceed to log in page');
             }
 
         } catch (error) {
@@ -62,13 +66,12 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
         }
     }
 
-    async function modifyUserInfo(ev) {
-         ev.preventDefault();
+    async function modifyUserInfo() {
         try {
             if (passwordInput != confirmPasswordInput){
                 throw new Error(`Passwords must match`);
             }
-            const put = await fetch("http://localhost:8080/users", {method: "PUT",
+            const put = await fetch(`http://localhost:8080/users/${currentUser.id}`, {method: "PUT",
                 headers: {
                     "Content-type": "application/json"
                 },
@@ -83,6 +86,10 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
             }) 
             if (!put.ok){
                 throw new Error(`Database connection error, entry was unable to be sent`);
+            } else {
+                setSubmissionFail(false);
+                setsubmissionFailMessage("");
+                setSubmissionSuccessMessage("Profile Updated!")
             }
         } catch (error) {
             setSubmissionFail(true);
@@ -90,8 +97,16 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
         }
     }
 
-    function updateUserinfo() {
-        isLoggedIn ? modifyUserInfo() : createUser();
+    async function updateUserinfo(ev) {
+        ev.preventDefault();
+        if (isLoggedIn){
+            modifyUserInfo();
+        } else {
+            createUser();
+        }  
+    }
+
+    function goBack() {
         setEmailInput("");
         setNameInput("");
         setUsernameInput("");
@@ -100,14 +115,10 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
         setModifyUser(false);
     }
 
-    function goBack() {
-        setModifyUser(false);
-    }
-
  return(
         <div className='updateUser'>
             <form className='newUserForm' onSubmit={updateUserinfo}>
-                {currentUser ? <h2>Edit Profile</h2> : <h2>Create Account</h2>}
+                {isLoggedIn ? <h2>Edit Profile</h2> : <h2>Create Account</h2>}
                 <label htmlFor="email"> Email:<br/>
                     <input id="email" type="email" name="email" 
                     value={emailInput} onChange={handleEmailChange} placeholder="Email address" required/>
@@ -129,6 +140,7 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
                     value={confirmPasswordInput} onChange={handleConfirmPasswordChange} placeholder="Re-Enter Password" required/>
                 </label> <br/>
                 {submissionFail && <p>{submissionFailMessage}</p>}
+                {submissionSuccessMessage && <p>{submissionSuccessMessage}</p>}
                 {isLoggedIn ? <button name="submit" id="submit" type="submit" >Update profile</button> :
                 <button name="submit" id="submit" type="submit" >Create profile</button>}
                 <button name="goBack" id="goBack" type="button" onClick={goBack}>Back</button>

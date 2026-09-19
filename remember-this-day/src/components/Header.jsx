@@ -3,7 +3,10 @@ import './Header.css'
 
 export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
 
-    const logout = () => setIsLoggedIn(false);
+    const logout = () => {
+        setIsLoggedIn(false);
+        setModifyUser(false);
+    };
 
     const navigate = useNavigate();
 
