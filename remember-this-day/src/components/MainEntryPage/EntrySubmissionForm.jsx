@@ -22,12 +22,12 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    user: currentUser.id,
+                    user: currentUser,
                     title: entryTitle,
                     entryText: entryTextBody,
                     date: entryDate,
                     dateCreated: new Date().toISOString(),
-                    previouslyDisplayed: false
+                    previouslyDisplayed: "false"
                 })
             })
             if (!post.ok){

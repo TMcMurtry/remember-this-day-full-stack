@@ -32,11 +32,11 @@ export default function AddEditUser({currentUser, isLoggedIn, setModifyUser}){
                 throw new Error(`Passwords must match`);
             }
             const response = await fetch("http://localhost:8080/users");
-            const data = await response.json;
+            const data = await response.json();
             if (!response.ok){
                 throw new Error(`Database connection error, entry was unable to be sent`);
             }
-            const userMatch = data.filter((user) => {user.username === usernameInput});
+            const userMatch = data.filter((user) => user.username === usernameInput);
             if (userMatch.length != 0){
                 throw new Error(`Chosen username already taken`)
             }

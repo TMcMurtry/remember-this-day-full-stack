@@ -6,7 +6,6 @@ export default function ViewPastEntries({currentUser, backgroundSelector, setBac
     const [entries, setEntries] = useState("");
     const [randomEntryNumber, setRandomEntryNumber] = useState("");
     const [selectedEntry, setSelectedEntry] = useState("");
-    const [entryDisplayFailure, setEntryDisplayFailure] = useState(false);
     const [entryFailureMessage, setEntryFailureMessage] = useState("");
     
 
@@ -19,16 +18,22 @@ export default function ViewPastEntries({currentUser, backgroundSelector, setBac
         const response = await fetch(`http://localhost:8080/entries/user/${currentUser.id}`);
         const data = await response.json();
         if (!response.ok){
-            throw new Error(`HTTP error: ${response.status} - could not connect to the database`)
+            throw new Error(`HTTP error: ${response.status} - could not connect to the database`);
         }
+        if (!Array.isArray(data) || data.length === 0){
+            throw new Error(`No entries found, submit an entry to start your journey!`);
+        }
+        const selectIndex = random(data);
+        const selectEntryByIndex = data[selectIndex];
+
         setEntries(data);
-        setRandomEntryNumber(random(entries));
-        setSelectedEntry(entries[randomEntryNumber]);
+        setRandomEntryNumber(selectIndex);
+        setSelectedEntry(selectEntryByIndex);
         setEntryDisplay(true);
         setEntryButtonText("View Another Entry!")
         setBackgroundSelector(backgroundSelector + 1)
+
         } catch (error){
-            setEntryDisplayFailure(true);
             setEntryFailureMessage(error.message);
         }
     }   
@@ -41,10 +46,10 @@ export default function ViewPastEntries({currentUser, backgroundSelector, setBac
                 {selectedEntry.title && <h3>Title: {selectedEntry.title}</h3>}
                 <p>Entry: <br/> {selectedEntry.entryText}</p>
                 </div>}
+            {entryFailureMessage && <p>{entryFailureMessage}</p>}
             <label htmlFor="viewPastEntries">
                 <button name="viewPastEntries" id="viewPastEntries" type="button" onClick={entryDisplayFunction}>{entryButtonText}</button>
             </label>
-            {entryDisplayFailure && <p>{entryFailureMessage}</p>}
         </div>
     )
 }
