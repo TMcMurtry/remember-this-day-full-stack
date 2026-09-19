@@ -3,36 +3,77 @@
     background-size: 100% 100%;
     height: 100%;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    align-items: flex-start;
 
 }
 
 .searchEntries{
+flex: 0 0 30%;
+display: flex;
+flex-direction: column;
+align-items: center;
+box-sizing: border-box;
+background-color: rgba(255, 255, 255, .5);
+border-radius:15px;
+padding: 20px;
+margin: 20px;
 
 }
 
-.chosenEntry{
-
+.searchEntries h2{
+    padding: 15px;
 }
 
-.searchPage h2{
-    grid-column: 1/2;
-    grid-row-start: 1;
-}
-
-.searchPage label{
-    grid-column: 1/2;
-    grid-row-start: 2;
+.searchEntries label{
+   justify-self: center;
 } 
 
 .searchPage ul{
     grid-column: 1/2;
     grid-row-start: 3;
+    list-style-type: none;
+    height: auto;
+    
 }
 
 .searchPage li{
+    background-color: rgba(255, 255, 255, .5);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+}
 
+.chosenSearchResult{
+    background-color: rgba(255, 255, 255, .5);
+    flex: 0 0 60%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    gap: 15px;
+}
+
+.chosenSearchResult label{
+    max-width: 80%;
+}
+
+.chosenSearchResult textarea{
+    field-sizing: content;
+    min-height: 150px;
+    max-height: 500px;
+    resize: none;
+    overflow-y: auto;
+}
+
+.formButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 15px;
+    margin: 10px;
+    gap: 50px;
 }
 
 .searchPage form{

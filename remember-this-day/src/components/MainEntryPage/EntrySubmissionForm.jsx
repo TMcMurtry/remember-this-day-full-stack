@@ -54,7 +54,7 @@ export default function EntrySubmissionForm({currentUser, backgroundSelector,
             <label htmlFor="title">Title: <br/>
                 <input name="title" id="title" type="text" value={entryTitle} onChange={handleTitleChange} placeholder="Enter Title"/>
             </label>
-            <label htmlFor="entryText">
+            <label htmlFor="entryText"> Entry: <br/>
                 <textarea name="entryText" id="entryText" value={entryTextBody} onChange={handleEntryTextChange} 
                 cols={40} rows={6} placeholder="Type your entry here" required/>
             </label>

@@ -41,7 +41,8 @@ export default function EntrySubmission({currentUser}){
         const matching = entries.filter( (entry) => entry.entryText.includes(searchInput)); 
         setMatchingEntries(matching);
         setNoMatch(matching.length === 0 ? "No Entries Found" : "");
-
+        setDeleteSuccess("");
+        setEditSuccess("");
     }, [searchInput, entries]);
 
     useEffect(() => {
@@ -104,28 +105,28 @@ export default function EntrySubmission({currentUser}){
                 {searchError && <p>{errorMessage}</p>}
                 {noMatch && <p>{noMatch}</p>}
                 <ul>
-                {matchingEntries.map((entry) => <li onClick={() => setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50)} </li> )}
+                {matchingEntries.map((entry) => <li onClick={() => setChosenEntry(entry)}>Date: {entry.date} <br/> Title: {entry.title} <br/> Entry: {entry.entryText.slice(0,50) + ' (click to open)'} </li> )}
                 </ul>
             </div>
-            <div className='chosenEntry'>
-                {chosenEntry &&
-                    <form className='chosenSearchResult' >
-                        <h4>Edit or Remove Entry</h4>
-                        <label htmlFor='title'>
-                            <input name="title" id="title" type="text" value={titleField} onChange={handleTitleChange} placeholder="Enter Title"/>
-                        </label>
-                        <label htmlFor='entry'>
-                            <input name="entry" id="entry" type="text" value={entryField} onChange={handleEntryChange} placeholder="Journal Entry"/>
-                        </label>
-                        <label htmlFor='date'>
-                            <input name="date" id="date" type='date' value={dateField} onChange={handleDateChange} placeholder="Date"/>
-                        </label>
+            {chosenEntry &&
+                <form className='chosenSearchResult' >
+                    <h3>Edit or Remove Entry</h3>
+                    <label htmlFor='title'> Title: <br/>
+                        <input name="title" id="title" type="text" value={titleField} onChange={handleTitleChange} placeholder="Enter Title"/>
+                    </label>
+                    <label htmlFor='entry'> Entry: <br/>
+                        <textarea name="entry" id="entry" type="text" value={entryField} onChange={handleEntryChange} placeholder="Journal Entry" rows="6"/>
+                    </label>
+                    <label htmlFor='date'>Date: <br/>
+                        <input name="date" id="date" type='date' value={dateField} onChange={handleDateChange} placeholder="Date"/>
+                    </label>
+                    <div className='formButtons'>
                         <button name="edit" id="edit" type='button' onClick={editEntry}>Edit</button> 
                         <button name="delete" id="delete" type='button' onClick={deleteEntry}>Delete</button> 
-                        {editSuccess && <p>{editSuccess}</p>}
-                        {deleteSuccess && <p>{deleteSuccess}</p>}
-                    </form>
-                } 
-            </div>      
+                    </div>
+                    {editSuccess && <p>{editSuccess}</p>}
+                    {deleteSuccess && <p>{deleteSuccess}</p>}
+                </form>
+            }     
         </div>
     )};
