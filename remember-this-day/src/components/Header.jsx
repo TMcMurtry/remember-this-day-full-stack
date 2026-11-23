@@ -26,15 +26,15 @@ export default function Header({isLoggedIn, setIsLoggedIn, setModifyUser}){
             </div>
             {!isLoggedIn ? 
             <nav className="loggedOutNav">
-                <Link to="/">Main Page</Link>
-                <Link to="/about">About this application</Link>
-                <Link to="/Optimizing">How to make the most of your journal</Link>
+                <Link to="/">Main</Link>
+                <Link to="/Benefits">Journaling Benefits</Link>
+                <Link to="/About">About</Link>
             </nav> : 
             <nav className="loggedInNav">
-                <Link to="/">Main Page</Link>
-                <Link to="/about">About this application</Link>
-                <Link to="/Optimizing">How to make the most of your journal</Link>
-                <Link to="/SearchPage">Search Page</Link>
+                <Link to="/">Main</Link>
+                <Link to="/Benefits">Journaling Benefits</Link>
+                <Link to="/About">About</Link>
+                <Link to="/Search">Search</Link>
             </nav>
             }   
         </div>

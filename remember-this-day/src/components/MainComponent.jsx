@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router';
 import Login from './Login';
-import AboutPage from './AboutPage';
 import EntrySubmission from './MainEntryPage/EntrySubmission'
-import Optimizing from './Optimizing';
 import './MainComponent.css'
 import SearchPage from './SearchPage'
 import AddEditUser from './AddEditUser';
+import Benefits from './Benefits';
+import About from './About';
 
 
 export default function MainComponent({currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, modifyUser, setModifyUser}){
@@ -17,14 +17,14 @@ export default function MainComponent({currentUser, setCurrentUser, isLoggedIn, 
         <Routes>
           { modifyUser ? <Route path="/" element={<AddEditUser  currentUser={currentUser} isLoggedIn={isLoggedIn} setModifyUser={setModifyUser}/>}/>
           : <Route path="/" element={<Login  setCurrentUser={setCurrentUser} setIsLoggedIn={setIsLoggedIn} setModifyUser={setModifyUser}/>}/>}
-          <Route path="/about" element={<AboutPage/>}/>
-          <Route path="/optimizing" element={<Optimizing/>}/>
+          <Route path="/Benefits" element={<Benefits/>}/>
+          <Route path="/About" element={<About/>}/>
         </Routes> :
         <Routes>
           { modifyUser ? <Route path="/" element={<AddEditUser  currentUser={currentUser} isLoggedIn={isLoggedIn} setModifyUser={setModifyUser}/>}/>
           : <Route path="/" element={<EntrySubmission currentUser={currentUser} setCurrentUser={setCurrentUser} />}/>}
-          <Route path="/about" element={<AboutPage/>}/>
-          <Route path="/optimizing" element={<Optimizing/>}/>
+          <Route path="/Benefits" element={<Benefits/>}/>
+          <Route path="/About" element={<About/>}/>
           <Route path="/SearchPage" element={<SearchPage currentUser={currentUser}/>}/>
         </Routes>
       }

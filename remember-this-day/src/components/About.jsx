@@ -1,6 +1,6 @@
-import './Optimizing.css'
+import './About.css'
 
-export default function Optimizing(){
+export default function About(){
 
     return(
         <div className='optimizing'>

@@ -1,6 +1,6 @@
-import './AboutPage.css'
+import './Benefits.css'
 
-export default function AboutPage(){
+export default function Benefits(){
 
     return(
         <div className='aboutBackground'>
