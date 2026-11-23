@@ -6,11 +6,16 @@
 }
 
 @media (max-width: 1200px){
-    
+    .mainTitle h1{
+        margin-bottom: 0;
+    }
+    .mainTitle p {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 600px){
-    
+    .
 }
 
 .mainTitle{
