@@ -23,7 +23,7 @@
     }
 }
 
-@media (max-width: 600px){
+@media (max-width: 400px){
     .optimizing{
         min-height: 100%;
         max-width: 100%;

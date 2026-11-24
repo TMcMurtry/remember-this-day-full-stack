@@ -1,7 +1,29 @@
+@media (max-width:1200px){
+    .footerDisplay{
+        grid-area: 'Footer';
+        display: flex;
+
+    }
+}
+
+@media (max-width:400px){
+    .footerDisplay{
+        grid-area: 'Footer';
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        font-size: smaller;
+    }
+
+}
+
 .footerDisplay {
     grid-area: 'Footer';
     display: flex;
     align-items: center;
-    white-space:pre;
     justify-content: center;
+}
+
+.footerDisplay a{
+    margin: 5px;
 }

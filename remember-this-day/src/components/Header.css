@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 600px){
-    .
+    
 }
 
 .mainTitle{
@@ -60,7 +60,6 @@ nav{
     justify-content: end;
     align-items: center;
     padding: 15px;
-    white-space: pre;
     gap: 20px;
     margin-right: 20px;
 }
